@@ -8,7 +8,7 @@ def addTwoNumbers(l1, l2):
     return add(l1, l2, 0)
 
 def add(l1, l2, carry):
-    if( l2 != None and l1 != None):
+    if( l2 != None or l1 != None):
         sum = carry
         ll1 = l1
         ll2 = l2
