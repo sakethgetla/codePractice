@@ -29,7 +29,9 @@ string longestPalindrome(string s){
 
 
     int centre = 0;
+    int oldCentre = 0;
     int radius = 0;
+    int oldRadius = 0;
     int maxRadius = 0;
     int maxRadiusCentre = 0;
 
@@ -43,6 +45,8 @@ string longestPalindrome(string s){
             maxRadius = radius;
             maxRadiusCentre = centre;
         }
+        oldCentre = centre;
+        oldRadius = radius;
         centre++;
     }
     // cout << maxRadiusCentre << endl;
