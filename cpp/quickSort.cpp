@@ -42,7 +42,6 @@ void quickSort(int* array, int low, int high){
 
 void printArray(int* array, int length){
     for( int a = 0 ; a < length ; a++  ){
-
         cout << array[a] << ", ";
     }
     cout << endl;
