@@ -17,9 +17,9 @@ string intToRoman(int num){
     int curr = 12;
     string out;
 
-    for (int i = 0; i < 7; i++){
-       cout << rom[i] << ' ' << dec[i] << endl;
-    }
+    // for (int i = 0; i < 7; i++){
+    //    cout << rom[i] << ' ' << dec[i] << endl;
+    // }
 
 
 
@@ -29,7 +29,7 @@ string intToRoman(int num){
         if (dec[curr] <= num ){
            // out.append(rom[curr]) ;
            // out.append("eist") ;
-            cout << num << ' '<< dec[curr] << ' ' << dec[curr]%num<< endl;
+            // cout << num << ' '<< dec[curr] << ' ' << dec[curr]%num<< endl;
             out += rom[curr];
             num -= dec[curr];
 
