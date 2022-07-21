@@ -9,7 +9,7 @@ using namespace std;
 template <class T>
 void printVector(vector<T> vec){
     for (T v : vec){
-        cout << v << "->" ;
+        cout << v << ' ' ;
     }
     cout << endl;
 }
