@@ -34,6 +34,12 @@ int main(){
         cout << *b << endl;
     }
 
+
+        cout << INT32_MIN << endl;
+        cout << (false == false) << endl;
+
+
+
     // cout << c << endl;
     // c++;
     // cout << c << endl;
