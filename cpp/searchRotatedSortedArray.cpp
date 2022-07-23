@@ -109,7 +109,6 @@ int search(vector<int>& nums, int target) {
         // check if pivot
     }
 
-
     return -1;
 }
 

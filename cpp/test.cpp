@@ -20,23 +20,38 @@ int main(){
     // cout << i << endl;
 
 
-    string s = "abcd";
-    cout << s << endl;
-    char *c = &s[0];
+    int a = 60;
+    int c;
 
-    vector<char*> a = {&s[0], &s[2]};
-
-
-    for(char* b: a){
-        // cout << (char) *b << endl;
-        cout << *b << endl;
-        b++;
-        cout << *b << endl;
-    }
+    // binary make negative
+    c = ( a ^ -1) + 1;
+    cout << a << ": " << c << endl;
 
 
-        cout << INT32_MIN << endl;
-        cout << (false == false) << endl;
+    a = -1;
+    // binary make positive
+    c = ( a -1 ) ^ -1;
+    cout << a << ": " << c << endl;
+
+
+    // string pointers
+    // string s = "abcd";
+    // cout << s << endl;
+    // char *c = &s[0];
+
+    // vector<char*> a = {&s[0], &s[2]};
+
+
+    // for(char* b: a){
+    //     // cout << (char) *b << endl;
+    //     cout << *b << endl;
+    //     b++;
+    //     cout << *b << endl;
+    // }
+
+
+    // cout << INT32_MIN << endl;
+    // cout << (false == false) << endl;
 
 
 

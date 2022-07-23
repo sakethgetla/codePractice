@@ -116,28 +116,15 @@ int numMatchingSubseq(string s, vector<string> &words){
         pending[c-'a'] = {};
 
         for (char * t: curr){
-            // cout << (char) *t << ", " << endl;
-            // cout << t << ", " << endl;
-            // cout << (char) *t - 'a' << ", " << endl;
             t++;
-            // cout << t << ", " << endl;
-            // cout << t << ", " << (*t == 0) << ", " << endl;
             if (*t == 0){
                 num++;
-                // cout << "here" << endl;
             } else {
-                // cout << *t - 'a';
-                // cout << (char) *t - 'a' << ", " << endl;
-                // cout << (char) *t << ", " << endl;
                 pending[*t-'a'].push_back(t);
             }
         }
     }
 
-    // for (int i = 0; i <= s.length(); i++ ){
-    //     cout << (int) s[i] << ',';
-    // }
-    // cout << '<' << endl;
 
 
 
