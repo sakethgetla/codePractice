@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <cmath>
 #include <unordered_map>
 
 using namespace std;
@@ -25,6 +26,7 @@ long int divideTwoIntPos(long int dividend, long int divisor){
 
 int divideTwoInt(int dividend, int divisor){
     vector<long int> multiples ;
+    vector<long int> factors ;
     int sign = 0;
 
     if(dividend == 0){
@@ -47,28 +49,31 @@ int divideTwoInt(int dividend, int divisor){
         multiples.push_back(divisor);
     }
 
+    factors.push_back(1);
     cout << newDividend << " / " << multiples.front() << " = " << endl;
     // if((newDividend > 0) != (divisor > 0)){
     // }
 
     long int num = 0;
 
-    num = divideTwoIntPos(newDividend, multiples.front());
+    // num = divideTwoIntPos(newDividend, multiples.front());
 
-    // while (newDividend >= multiples[0]){
-    //     multiples.push_back(multiples.back()+multiples.front());
+    while (newDividend >= multiples[0]){
+        multiples.push_back(multiples.back()+multiples.back());
+        factors.push_back(factors.back()+factors.back());
 
-    //     // find the largest multiple smaller than dividend
-    //     int curr = multiples.size()-1;
-    //     while (multiples[curr] > newDividend) {
-    //         curr --;
-    //     }
+        // find the largest multiple smaller than dividend
+        int curr = multiples.size()-1;
+        while (multiples[curr] > newDividend) {
+            curr --;
+        }
 
-    //     // printVector(multiples);
-    //     // cout << newDividend << " - " << multiples[curr] << ", " << curr << endl;
-    //     newDividend -= multiples[curr];
-    //     num += curr+1;
-    // }
+        // printVector(multiples);
+        cout << newDividend << " - " << multiples[curr] << ", " << curr << ", " << num << endl;
+        newDividend -= multiples[curr];
+        // num += curr^2;
+        num += factors[curr];
+    }
 
     return (sign == 0 || sign == 2) ? (num > INT32_MAX)? INT32_MAX: num : (-num < INT32_MIN)? INT32_MIN: -num;
 }
