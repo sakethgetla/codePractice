@@ -33,6 +33,16 @@ int main(){
     c = ( a -1 ) ^ -1;
     cout << a << ": " << c << endl;
 
+    a = 21;
+    cout << a << ": " << ( a << 2 ) << endl;
+    a = -37;
+    cout << a << ": " << ( a << 2 ) << endl;
+
+    cout << INT32_MIN << ", " << abs(INT32_MIN) << ", " << abs(INT32_MIN) -1 << endl;
+
+    vector<int> b = {};
+    cout << b.size() << endl;
+
 
     // string pointers
     // string s = "abcd";
