@@ -111,7 +111,7 @@ vector<int> searchRange(vector<int>& nums, int target) {
 
             // cout << start << " here" << endl;
     // cout << nums[ start ] << ", " << nums[ end ] << endl;
-    if (start > 0 && nums[start] == target)
+    if (start >= 0 && nums[start] == target)
         return {start, end};
     else
         return {-1, -1};
@@ -158,7 +158,7 @@ int main(){
     printVector(nums);
     ans = searchRange(nums, target);
     printVector(ans);
-    exp = {0, 01};
+    exp = {0, 0};
     assert(ans == exp && "failed");
     // printVector(searchRange(nums, target));
 
