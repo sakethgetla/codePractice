@@ -68,8 +68,6 @@ void printVector(vector<T> vec){
 int uniquePaths(int m, int n){
     // unordered_map<int, int> a;
 
-    // vector<vector<int>> paths ((m,n), 1)
-    // vector<vector<int>> paths (m,(vector<int>(n, 1)));
     vector<int> paths (n,1);
 
     for (int j = 1; j < m ; j++) {

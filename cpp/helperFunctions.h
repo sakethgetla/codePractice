@@ -43,6 +43,15 @@ TreeNode * makeBTree(int * val, int length){
     return nullptr;
 }
 
+void freeBTree(TreeNode * root){
+    if (root != nullptr) {
+        freeBTree(root->left);
+        freeBTree(root->right);
+        free(root);
+    }
+}
+
+
 
 
 struct ListNode {
@@ -72,6 +81,14 @@ ListNode * makeList(int *ptr, int length) {
         return a;
     }
     return nullptr;
+}
+
+
+void freeList(ListNode * head){
+    if (head != nullptr) {
+        freeList(head->next);
+        free(head);
+    }
 }
 
 
