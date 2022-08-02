@@ -19,38 +19,31 @@ void printVector(vector<T> vec){
 
 // int uniquePaths(unordered_map<int[2], int> hmap, int m, int n){
 
-int uniquePaths(unordered_map<int, int> *hmap, int m, int n){
-    if (m == 1 || n == 1){
-        return 1;
-    } else {
-        int count = 0;
+// int uniquePaths(unordered_map<int, int> *hmap, int m, int n){
+//     if (m == 1 || n == 1){
+//         return 1;
+//     } else {
+//         int count = 0;
 
-        // if (hmap.find({m, n-1}) == hmap.end()) {
-        if (hmap->find(( m*100 ) +n-1) == hmap->end()) {
-            // hmap[( m*100 ) +n-1] = uniquePaths(hmap, m, n-1);
-            hmap->insert({(m*100 ) +n-1, uniquePaths(hmap, m, n-1)});
-        }
-        count += hmap->at( ( m*100 ) +n-1 );
+//         // if (hmap.find({m, n-1}) == hmap.end()) {
+//         if (hmap->find(( m*100 ) +n-1) == hmap->end()) {
+//             // hmap[( m*100 ) +n-1] = uniquePaths(hmap, m, n-1);
+//             hmap->insert({(m*100 ) +n-1, uniquePaths(hmap, m, n-1)});
+//         }
+//         count += hmap->at( ( m*100 ) +n-1 );
 
-        // if (hmap.find({m-1, n}) == hmap.end()) {
-        if (hmap->find(( ( m-1 )*100 ) +n) == hmap->end()) {
-            // hmap[( ( m-1 )*100 ) +n] = uniquePaths(hmap, m-1, n);
-            hmap->insert({( ( m-1 )*100 ) +n, uniquePaths(hmap, m-1, n)});
-        }
-        count += hmap->at(( ( m-1 )*100 ) +n);
+//         // if (hmap.find({m-1, n}) == hmap.end()) {
+//         if (hmap->find(( ( m-1 )*100 ) +n) == hmap->end()) {
+//             // hmap[( ( m-1 )*100 ) +n] = uniquePaths(hmap, m-1, n);
+//             hmap->insert({( ( m-1 )*100 ) +n, uniquePaths(hmap, m-1, n)});
+//         }
+//         count += hmap->at(( ( m-1 )*100 ) +n);
 
-        return count;
-    }
-    return 0;
-}
+//         return count;
+//     }
+//     return 0;
+// }
 
-int uniquePaths(int m, int n){
-    unordered_map<int, int> a;
-    unordered_map<int, int> *hmap = &a;
-    // unordered_map<int[2], int> hmap;
-
-    return  uniquePaths(hmap, m, n);
-}
 
 // int uniquePaths(int m, int n){
 //     if (m == 1 || n == 1){
@@ -71,9 +64,29 @@ int uniquePaths(int m, int n){
 //     return 0;
 // }
 
+
+int uniquePaths(int m, int n){
+    // unordered_map<int, int> a;
+
+    // vector<vector<int>> paths ((m,n), 1)
+    // vector<vector<int>> paths (m,(vector<int>(n, 1)));
+    vector<int> paths (n,1);
+
+    for (int j = 1; j < m ; j++) {
+        for (int i = 1; i < n; i++) {
+            // cout << paths[i] << ", ";
+            paths[i] = paths[i] + paths[i-1];
+        }
+        // cout << endl;
+    }
+
+    return paths[n-1];
+}
+
 int main(){
     int m = 2, n = 2;
     int ans = uniquePaths(m, n);
+
     cout << m << ", " << n << ", " << ans  << endl;
     assert(ans == 2);
 
@@ -128,11 +141,11 @@ int main(){
 
 
 
-    m = 51, n = 9;
-    ans = uniquePaths(m, n);
-    int ans1 = uniquePaths(n, m);
-    assert(ans == ans1);
-    cout << ans1 << ", " << ans1 << endl;
+    // m = 51, n = 9;
+    // ans = uniquePaths(m, n);
+    // int ans1 = uniquePaths(n, m);
+    // assert(ans == ans1);
+    // cout << ans1 << ", " << ans1 << endl;
 
     // ans = uniquePaths(m, n);
     // cout << m << ", " << n << ", " << ans  << endl;

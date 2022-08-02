@@ -23,6 +23,8 @@ void printBTree(TreeNode* root){
         cout << root->val << ", ";
         printBTree(root->left);
         printBTree(root->right);
+    } else {
+        cout << "null, " ;
     }
 }
 
@@ -44,7 +46,26 @@ TreeNode * makeBTree(int * val, int length){
 }
 
 void flatten(TreeNode* root) {
+    TreeNode * curr = root;
+    // TreeNode * temp = nullptr;
+    vector<TreeNode*> stack ;
     if (root != nullptr) {
+        while(curr->right != nullptr || curr->left != nullptr || !stack.empty()){
+            if (curr->left != nullptr) {
+                if (curr->right != nullptr){
+                    stack.push_back(curr->right);
+                }
+                curr->right = curr->left;
+                curr->left = nullptr;
+            }
+
+            if (curr->right == nullptr){
+                curr->right = stack.back();
+                stack.pop_back();
+            }
+
+            curr = curr->right;
+        }
 
     }
 
@@ -62,11 +83,23 @@ void freeBTree(TreeNode * root){
 
 int main(){
 
+    // int a[5] = {1,2,3,4,5};
+    int len = 5;
     int a[5] = {1,2,3,4,5};
+    // int a[2] = {1,2};
+    // a = {1,2};
 
-    TreeNode * root = makeBTree(a, 5);
+    vector<TreeNode*> stack = {};
+    assert(stack.empty());
+
+    TreeNode * root = makeBTree(a, len);
     printBTree(root);
     cout << endl;
+
+    flatten(root);
+    printBTree(root);
+    cout << endl;
+
     freeBTree(root);
 
     return 0;
