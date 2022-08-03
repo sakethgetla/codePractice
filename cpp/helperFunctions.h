@@ -102,11 +102,38 @@ void printVector(vector<T> vec){
 }
 
 
-void print2dVec(vector<vector<int>> vec){
-    for (vector<int> v : vec){
+template <class T>
+void print2dVec(vector<vector<T>> vec){
+    for (vector<T> v : vec){
         printVector(v);
     }
 }
+
+// template <class T>
+// void printIterable(Array itr){
+//     for (auto v : itr){
+//         cout << v << "->" ;
+//     }
+//     cout << endl;
+// }
+
+template<typename Type>
+void printArray(Type arr, int size){
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << ", ";
+    }
+    cout << endl;
+}
+
+
+// template<typename Type, int Size>
+// template<typename Type>
+// void printIterable(Type const(& itr)) {
+//     for (auto v : itr){
+//         cout << v << "->" ;
+//     }
+//     cout << endl;
+// }
 
 // int main(){
 //     vector<vector<int>> matrix = {{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30}};

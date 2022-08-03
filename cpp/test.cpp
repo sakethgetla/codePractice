@@ -6,26 +6,26 @@ using namespace std;
 
 
 int main(){
-    // int i = 0;
-    // cout << i << endl;
-    // p(i++);
-    // p(i);
-    // // p(++i);
-    // // i++;
-    // cout << i << endl;
+    int i = 0;
+    vector<int> a = {0,1,2,3,4,5};
+
+    cout << i << endl;
+    cout << a[++i] << endl;
+    cout << a[i++] << endl;
+    cout << i << endl;
 
 
-    int a[5] = {1,2,3,46,68};
-    ListNode* head = makeList(a, 5);
-    printListNode(head);
-    freeList(head);
-    cout << "hites" << endl;
+    // int a[5] = {1,2,3,46,68};
+    // ListNode* head = makeList(a, 5);
+    // printListNode(head);
+    // freeList(head);
+    // cout << "hites" << endl;
 
 
 
-    typedef int pair[2];
+    // typedef int pair[2];
 
-    pair p = {1,2};
+    // pair p = {1,2};
 
 
     // int a = 60;
