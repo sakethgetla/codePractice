@@ -1,18 +1,33 @@
+#include <algorithm>
 #include <cstdlib>
+#include <vector>
 #include "helperFunctions.h"
+#include <bits/stdc++.h>
+
 
 using namespace std;
     // const long &a = NULL;
 
 
-int main(){
-    int i = 0;
-    vector<int> a = {0,1,2,3,4,5};
 
-    cout << i << endl;
-    cout << a[++i] << endl;
-    cout << a[i++] << endl;
-    cout << i << endl;
+
+int main(){
+
+
+
+    // testing random numbers.
+    // int a = rand();
+    // cout << a << ", " << a%10 << ", " << a%1000 << endl;
+    //
+    // cout << rand()%10 << endl;
+
+    // int i = 0;
+    // vector<int> a = {0,1,2,3,4,5};
+
+    // cout << i << endl;
+    // cout << a[++i] << endl;
+    // cout << a[i++] << endl;
+    // cout << i << endl;
 
 
     // int a[5] = {1,2,3,46,68};
@@ -71,11 +86,6 @@ int main(){
     // cout << INT32_MIN << endl;
     // cout << (false == false) << endl;
 
-
-
-    // cout << c << endl;
-    // c++;
-    // cout << c << endl;
 
 
     return 0;

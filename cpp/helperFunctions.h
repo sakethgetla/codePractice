@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 // Definition for a binary tree node.
@@ -96,7 +97,7 @@ void freeList(ListNode * head){
 template <class T>
 void printVector(vector<T> vec){
     for (T v : vec){
-        cout << v << "->" ;
+        cout << v << ", " ;
     }
     cout << endl;
 }
@@ -124,6 +125,18 @@ void printArray(Type arr, int size){
     }
     cout << endl;
 }
+
+void generateRandomVec(vector<int> &vec, int low, int high){
+    for (int i = 0; i < vec.size(); i++) {
+        vec[i] = (rand()%( high - low )) + low;
+    }
+}
+
+void generateSortedVec(vector<int> &vec, int low, int high){
+    generateRandomVec(vec, low, high);
+    sort(vec.begin(), vec.end());
+}
+
 
 
 // template<typename Type, int Size>
