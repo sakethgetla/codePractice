@@ -138,6 +138,20 @@ void generateSortedVec(vector<int> &vec, int low, int high){
 }
 
 
+template<typename Type>
+vector<vector<Type>> vecToMatrix(vector<Type> nums, int m, int n){
+    vector<vector<Type>> matrix;
+    for (int j = 0; j < m; j++) {
+        vector<Type> row;
+        for (int i = 0; i < n; i++) {
+            // cout <<(j*n) << ", " << i << endl;
+            row.push_back(nums[(j*n)+i]);
+        }
+        matrix.push_back(row);
+    }
+    return matrix;
+}
+
 
 // template<typename Type, int Size>
 // template<typename Type>
