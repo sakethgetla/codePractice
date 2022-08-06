@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cstring>
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -126,16 +127,33 @@ void printArray(Type arr, int size){
     cout << endl;
 }
 
-void generateRandomVec(vector<int> &vec, int low, int high){
-    for (int i = 0; i < vec.size(); i++) {
-        vec[i] = (rand()%( high - low )) + low;
+// void generateRandomVec(vector<int> &vec, int low, int high){
+//     for (int i = 0; i < vec.size(); i++) {
+//         vec[i] = (rand()%( high - low )) + low;
+//     }
+// }
+
+vector<int> generateRandomVec(int size, int low, int high){
+    vector<int> vec;
+    for (int i = 0; i < size; i++) {
+        vec.push_back((rand()%( high - low )) + low);
+
     }
+    return vec;
 }
 
-void generateSortedVec(vector<int> &vec, int low, int high){
-    generateRandomVec(vec, low, high);
+vector<int> generateSortedVec(int size, int low, int high){
+    vector<int> vec = generateRandomVec(size, low, high);
     sort(vec.begin(), vec.end());
+    return vec;
 }
+
+// void generateSortedVec(vector<int> &vec, int low, int high){
+//     generateRandomVec(vec, low, high);
+//     sort(vec.begin(), vec.end());
+// }
+
+
 
 
 template<typename Type>
@@ -153,18 +171,30 @@ vector<vector<Type>> vecToMatrix(vector<Type> nums, int m, int n){
 }
 
 
-// template<typename Type, int Size>
-// template<typename Type>
-// void printIterable(Type const(& itr)) {
-//     for (auto v : itr){
-//         cout << v << "->" ;
-//     }
-//     cout << endl;
-// }
+vector<vector<int>> makeRandomMatrix(int m, int n, int low, int high){
+    vector<vector<int>> matrix;
+    for (int j = 0; j < m; j++) {
+        matrix.push_back(generateRandomVec(n, low, high));
+    }
+    return matrix;
+}
 
-// int main(){
-//     vector<vector<int>> matrix = {{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30}};
-//     print2dVec(matrix);
 
-//     return 0;
-// }
+string makeRandomWord(int size){
+    char s[size];
+    for (int i = 0; i < size-1; i++) {
+        s[i] = 'a'+(rand()%26) ;
+    }
+    s[size-1] = '\0';
+    return s;
+}
+
+
+string makeRandomSentence(int numWords){
+    string s ;
+    for (int i = 0; i < numWords; i++) {
+        s += ' ';
+        s += makeRandomWord(1+( rand()%7 ));
+    }
+    return &s[1];
+}

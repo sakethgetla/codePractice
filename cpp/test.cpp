@@ -3,21 +3,31 @@
 #include <vector>
 #include "helperFunctions.h"
 #include <bits/stdc++.h>
+#include <cstring>
+
 
 
 using namespace std;
     // const long &a = NULL;
 
 
-
+// string makeRandomSentence(int numWords){
+//     string s ;
+//     for (int i = 0; i < numWords; i++) {
+//         s += ' ';
+//         s += makeRandomWord(1+( rand()%7 ));
+//     }
+//     return &s[1];
+// }
 
 int main(){
 
-
+    string a = makeRandomSentence(10);
+    cout << '"' << a << '"' << endl;
 
     // testing random numbers.
     // int a = rand();
-    // cout << a << ", " << a%10 << ", " << a%1000 << endl;
+    // cout << a << ", " << a%26 << ", " << a%1000 << endl;
     //
     // cout << rand()%10 << endl;
 
