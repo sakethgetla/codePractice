@@ -1,3 +1,5 @@
+#include <cassert>
+#include <cstdlib>
 #include <iostream>
 #include <vector>
 #include <cstring>
@@ -16,6 +18,7 @@ struct TreeNode {
 
 
 void printBTree(TreeNode* root){
+    // min heep
     //order: root, left, right.
     if (root != nullptr) {
         cout << root->val << ", ";
@@ -27,6 +30,7 @@ void printBTree(TreeNode* root){
 }
 
 TreeNode * makeBTree(int * val, int length){
+    // min heep
     //order: root, left, right.
     // doesnt work great.
     if (length > 0) {
@@ -53,6 +57,52 @@ void freeBTree(TreeNode * root){
     }
 }
 
+TreeNode * insertToBSTree(TreeNode* root, int val){
+    if (root == nullptr){
+        TreeNode *node = (TreeNode*) malloc(sizeof(TreeNode));
+        node->val = val;
+        node->left = nullptr;
+        node->right = nullptr;
+        return node;
+    } else if (root->val >= val) {
+        root->left = insertToBSTree(root->left, val);
+        return root;
+    } else if (root->val < val) {
+        root->right = insertToBSTree(root->right, val);
+        return root;
+    } else {
+        assert(false);
+        return root;
+    }
+}
+
+TreeNode * makeBSTree(vector<int> vals){
+    // order left -> root -> right.
+    TreeNode *node = insertToBSTree(nullptr, vals.back());
+    vals.pop_back();
+    for (int val : vals) {
+        node = insertToBSTree(node, val);
+    }
+    return node;
+}
+
+void printBSTree(TreeNode * node){
+    if (node == nullptr) {
+        cout << ", null";
+    } else {
+        printBSTree(node->left);
+        cout << ", " << node->val;
+        printBSTree(node->right);
+    }
+}
+
+int BTreeDepth(TreeNode * root){
+    if (root == nullptr) {
+        return 0;
+    } else {
+        return 1 + max(BTreeDepth(root->left), BTreeDepth(root->right));
+    }
+}
 
 
 
