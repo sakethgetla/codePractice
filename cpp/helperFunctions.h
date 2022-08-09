@@ -123,12 +123,14 @@ void printListNode(ListNode *head){
     }
 }
 
-ListNode * makeList(int *ptr, int length) {
-    if (length > 0){
+// ListNode * makeList(int *ptr, int length) {
+ListNode * makeList(vector<int> &vals) {
+    if (!vals.empty()) {
         // ListNode n = ListNode(*ptr, makeList(&ptr[1], length--));
         ListNode *a = (struct ListNode*) malloc(sizeof(struct ListNode));
-        a->val = *ptr;
-        a->next = makeList(&ptr[1], --length);
+        a->val = vals.back();
+        vals.pop_back();
+        a->next = makeList(vals);
         // a = ListNode(*ptr, makeList(&ptr[1], length--));
         return a;
     }
@@ -138,8 +140,9 @@ ListNode * makeList(int *ptr, int length) {
 
 void freeList(ListNode * head){
     if (head != nullptr) {
-        freeList(head->next);
+        ListNode * n = head->next;
         free(head);
+        freeList(n);
     }
 }
 

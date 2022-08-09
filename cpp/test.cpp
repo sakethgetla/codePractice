@@ -22,8 +22,8 @@ using namespace std;
 
 int main(){
 
-    string a = makeRandomSentence(10);
-    cout << '"' << a << '"' << endl;
+    // string a = makeRandomSentence(10);
+    // cout << '"' << a << '"' << endl;
 
     // testing random numbers.
     // int a = rand();
@@ -40,11 +40,11 @@ int main(){
     // cout << i << endl;
 
 
-    // int a[5] = {1,2,3,46,68};
-    // ListNode* head = makeList(a, 5);
-    // printListNode(head);
-    // freeList(head);
-    // cout << "hites" << endl;
+    vector<int> a = {1,2,3,46,68};
+    ListNode* head = makeList(a);
+    printListNode(head);
+    freeList(head);
+    cout << "hites" << endl;
 
 
 
