@@ -20,6 +20,18 @@ using namespace std;
 //     return &s[1];
 // }
 
+
+void f(vector<int> &vals, int i) {
+    if (!vals.empty()) {
+        // ListNode *a = (struct ListNode*) malloc(sizeof(struct ListNode));
+        cout << vals.back() << "-" << i << ", ";
+        vals.pop_back();
+        f(vals, i+1);
+    } else {
+        cout << endl;
+    }
+}
+
 int main(){
 
     // string a = makeRandomSentence(10);
@@ -41,10 +53,11 @@ int main(){
 
 
     vector<int> a = {1,2,3,46,68};
-    ListNode* head = makeList(a);
-    printListNode(head);
-    freeList(head);
-    cout << "hites" << endl;
+    // ListNode* head = makeList(a);
+    // printListNode(head);
+    // freeList(head);
+    f(a, 0);
+    // cout << "hites" << endl;
 
 
 

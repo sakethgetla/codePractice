@@ -56,65 +56,96 @@ void printVector(vector<T> vec){
 //}
 //
 
+//vector<int> searchRange(vector<int>& nums, int target) {
+//
+//    int low = 0, high = nums.size()-1, mid = -1;
+//    double t = target-0.5;
+//
+//    while (high >= low) {
+//        mid = (high + low)/2;
+//        if (nums[mid] == t ) {
+//            assert(false);
+//            high = low+1;
+//            // return {low, high};
+//        } else if (nums[mid] > t) {
+//            high = mid-1;
+//        } else {
+//            low = mid+1;
+//        }
+//    }
+//
+//    int start = mid;
+//    if (start < nums.size()-1 && nums[start] != target) {
+//        start ++;
+//    }
+//
+//            // cout << "here" << endl;
+//
+//    // cout << t << endl;
+//
+//    t = target+0.5;
+//    high = nums.size()-1;
+//            // assert(false);
+//
+//    while (high >= low) {
+//        mid = (high + low)/2;
+//        if (nums[mid] == t) {
+//            high = low+1;
+//            assert(false);
+//
+//            // return {low, high};
+//        } else if (nums[mid] > t) {
+//            high = mid-1;
+//        } else {
+//            low = mid+1;
+//        }
+//    }
+//    // cout << t << endl;
+//            // cout << "here" << endl;
+//
+//    int end = mid;
+//    if (end > 0 && nums[end] != target) {
+//            // cout << "here" << endl;
+//        end --;
+//    }
+//
+//            // cout << start << " here" << endl;
+//    // cout << nums[ start ] << ", " << nums[ end ] << endl;
+//    if (start >= 0 && nums[start] == target)
+//        return {start, end};
+//    else
+//        return {-1, -1};
+//}
+
+
+
 vector<int> searchRange(vector<int>& nums, int target) {
 
-    int low = 0, high = nums.size()-1, mid = -1;
-    double t = target-0.5;
+    int low = 0, high = nums.size()-1, mid;
 
-    while (high >= low) {
-        mid = (high + low)/2;
-        if (nums[mid] == t ) {
-            assert(false);
-            high = low+1;
-            // return {low, high};
-        } else if (nums[mid] > t) {
-            high = mid-1;
+    while (low < high) {
+        mid = ((low+high)/2) ;
+        if (nums[mid] >= target) {
+            high = mid;
         } else {
             low = mid+1;
         }
     }
 
     int start = mid;
-    if (start < nums.size()-1 && nums[start] != target) {
-        start ++;
-    }
-
-            // cout << "here" << endl;
-
-    // cout << t << endl;
-
-    t = target+0.5;
     high = nums.size()-1;
-            // assert(false);
 
-    while (high >= low) {
-        mid = (high + low)/2;
-        if (nums[mid] == t) {
-            high = low+1;
-            assert(false);
-
-            // return {low, high};
-        } else if (nums[mid] > t) {
+    while (low < high) {
+        mid = ((low+high+1)/2) ;
+        if (nums[mid] > target) {
             high = mid-1;
         } else {
-            low = mid+1;
+            low = mid;
         }
     }
-    // cout << t << endl;
-            // cout << "here" << endl;
 
-    int end = mid;
-    if (end > 0 && nums[end] != target) {
-            // cout << "here" << endl;
-        end --;
-    }
+    return {start, mid};
 
-            // cout << start << " here" << endl;
-    // cout << nums[ start ] << ", " << nums[ end ] << endl;
-    if (start >= 0 && nums[start] == target)
-        return {start, end};
-    else
-        return {-1, -1};
 }
 
 int main(){
