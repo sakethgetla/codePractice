@@ -120,6 +120,9 @@ void printVector(vector<T> vec){
 
 
 vector<int> searchRange(vector<int>& nums, int target) {
+    if (nums.empty()) {
+        return {-1, -1};
+    }
 
     int low = 0, high = nums.size()-1, mid;
 
@@ -132,7 +135,7 @@ vector<int> searchRange(vector<int>& nums, int target) {
         }
     }
 
-    int start = mid;
+    int start = low;
     high = nums.size()-1;
 
     while (low < high) {
@@ -144,7 +147,7 @@ vector<int> searchRange(vector<int>& nums, int target) {
         }
     }
 
-    return {start, mid};
+    return (nums[start] == target && nums[high] == target) ? ((vector<int>) {start, high} ) : (vector<int>){-1, -1};
 
 }
 

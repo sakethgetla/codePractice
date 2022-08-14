@@ -1,5 +1,8 @@
 #include <algorithm>
+#include <climits>
+#include <cmath>
 #include <cstdlib>
+#include <queue>
 #include <vector>
 #include "helperFunctions.h"
 #include <bits/stdc++.h>
@@ -32,6 +35,10 @@ void f(vector<int> &vals, int i) {
     }
 }
 
+
+
+
+
 int main(){
 
     // string a = makeRandomSentence(10);
@@ -52,11 +59,21 @@ int main(){
     // cout << i << endl;
 
 
-    vector<int> a = {1,2,3,46,68};
+    // vector<int> vals = generateSortedVec(pow(2, 4)-1, 0, pow(2, 4)-1);
+    vector<int> vals = generateSequenceVec(0, pow(2, 4));
+    printVector(vals);
+
+    TreeNode * root = makeBTree(vals);
+    print2dVec(levelOrderBTree(root));
+    freeBTree(root);
+    // printBTree(root);
+
+
+
     // ListNode* head = makeList(a);
     // printListNode(head);
     // freeList(head);
-    f(a, 0);
+    // f(a, 0);
     // cout << "hites" << endl;
 
 

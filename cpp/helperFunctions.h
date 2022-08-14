@@ -29,25 +29,91 @@ void printBTree(TreeNode* root){
     }
 }
 
-TreeNode * makeBTree(int * val, int length){
-    // min heep
-    //order: root, left, right.
-    // doesnt work great.
-    if (length > 0) {
-        TreeNode * root = (struct TreeNode*) malloc(sizeof(struct TreeNode));
-        root->val = *val;
-        root->left = makeBTree(val+1, (length -1)/2 );
-        // root->left = makeBTree(val+1, length-1 );
-        if (length > 1) {
-            root->right = makeBTree(val+1 + ((length-1)/2), length-1-( (length-1)/2 ));
-            // root->right = nullptr;
+
+TreeNode * makeBTree(vector<int> &vals){
+    queue<TreeNode *> q;
+    TreeNode* root = (TreeNode*) malloc(sizeof(TreeNode));
+    root->val = vals[0];
+    q.push(root);
+
+    for (int i = 1; i < vals.size(); i++) {
+        TreeNode* curr = q.front();
+        q.pop();
+        // cout << val << endl;
+        // TreeNode a = TreeNode();
+
+        TreeNode* a = (TreeNode*) malloc(sizeof(TreeNode));
+        a->val = vals[i];
+        a->left = nullptr;
+        a->right = nullptr;
+        curr->left = a;
+        q.push(a);
+
+        i++;
+
+        if (i < vals.size()) {
+            TreeNode* b = (TreeNode*) malloc(sizeof(TreeNode));
+            b->val = vals[i];
+            b->left = nullptr;
+            b->right = nullptr;
+            curr->right = b;
+            q.push(b);
         } else {
-            root->right = nullptr;
+            curr->right = nullptr;
         }
-        return root;
+
     }
-    return nullptr;
+    return root;
 }
+
+
+vector<vector<int>> levelOrderBTree(TreeNode* root) {
+    if (root == nullptr )
+        return {};
+    queue<pair<TreeNode*, int>> q;
+    vector<vector<int>> vals;
+    q.push({ root, 0 });
+    pair<TreeNode*, int> curr;
+    vector<int> row;
+    while (!q.empty()) {
+        curr = q.front();
+        q.pop();
+        if (curr.first){
+            if ( curr.second == vals.size()){
+                vals.push_back(vector<int>{});
+
+            }
+            vals[curr.second].push_back(curr.first->val);
+            // cout << curr.first << ", " << curr.first->val << ", " << curr.second << endl;
+            q.push({curr.first->left, curr.second +1});
+            q.push({curr.first->right, curr.second +1});
+        }
+
+    }
+    return vals;
+
+}
+
+
+// TreeNode * makeBTree(int * val, int length){
+//     // min heep
+//     //order: root, left, right.
+//     // doesnt work great.
+//     if (length > 0) {
+//         TreeNode * root = (struct TreeNode*) malloc(sizeof(struct TreeNode));
+//         root->val = *val;
+//         root->left = makeBTree(val+1, (length -1)/2 );
+//         // root->left = makeBTree(val+1, length-1 );
+//         if (length > 1) {
+//             root->right = makeBTree(val+1 + ((length-1)/2), length-1-( (length-1)/2 ));
+//             // root->right = nullptr;
+//         } else {
+//             root->right = nullptr;
+//         }
+//         return root;
+//     }
+//     return nullptr;
+// }
 
 void freeBTree(TreeNode * root){
     if (root != nullptr) {
@@ -198,6 +264,15 @@ vector<int> generateRandomVec(int size, int low, int high){
 vector<int> generateSortedVec(int size, int low, int high){
     vector<int> vec = generateRandomVec(size, low, high);
     sort(vec.begin(), vec.end());
+    return vec;
+}
+
+
+vector<int> generateSequenceVec(int low, int high){
+    vector<int> vec(high-low);
+    for (int i = low; i < high; i++ ){
+        vec[i-low] = i;
+    }
     return vec;
 }
 
