@@ -56,7 +56,17 @@ TreeNode* insertIntoBST(TreeNode* root, int val) {
         node->right = nullptr;
         return node;
     }
+
 }
+
+// =================================================================
+// ==31==ERROR: AddressSanitizer: alloc-dealloc-mismatch (malloc vs operator delete) on 0x603000000130
+//     #5 0x7f9dee62e0b2  (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+// 0x603000000130 is located 0 bytes inside of 24-byte region [0x603000000130,0x603000000148)
+// allocated by thread T0 here:
+//     #5 0x7f9dee62e0b2  (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+// ==31==HINT: if you don't care about these errors you may set ASAN_OPTIONS=alloc_dealloc_mismatch=0
+// ==31==ABORTING
 
 int main(){
     // vector<int> vals = generateSequenceVec(0, pow(2, 4));
