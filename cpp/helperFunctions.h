@@ -74,7 +74,7 @@ vector<vector<int>> levelOrderBTree(TreeNode* root) {
     vector<vector<int>> vals;
     q.push({ root, 0 });
     pair<TreeNode*, int> curr;
-    vector<int> row;
+    // vector<int> row;
     while (!q.empty()) {
         curr = q.front();
         q.pop();
