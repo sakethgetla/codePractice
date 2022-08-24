@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <queue>
 #include <vector>
-#include "helperFunctions.h"
+#include "helperFunctions.cpp"
 #include <bits/stdc++.h>
 #include <cstring>
 
@@ -63,14 +63,15 @@ int main(){
 
     // vector<int> vals = generateSequenceVec(10, pow(2, 4));
 
-    vector<int> vec = generateRandomVec(30, 0, 10);
+    // vector<int> vec = generateRandomVec(30, 0, 10);
+    vector<int> vec = generateRandomVec(50, 10, 100);
 
     // vector<int> vec = generateSortedVec(31, 10, 100);
     // vector<int> vec = {0};
     // vector<int> vec = {0,1};
     printVector(vec);
     TreeNode * root = makeBTree(vec);
-    cout << BTreeDepth(root) << endl;
+    cout << bTreeDepth(root) << endl;
 
     displayBTree(root);
 

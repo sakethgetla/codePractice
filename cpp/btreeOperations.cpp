@@ -157,9 +157,10 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
     if (!root) {
         return nullptr;
     } else if (root == p || root == q){
+        cout << root->val << endl ;
         return root;
     } else {
-        TreeNode * l = lowestCommonAncestor(root->left, p, q), * r = lowestCommonAncestor(root->left, p, q);
+        TreeNode * l = lowestCommonAncestor(root->left, p, q), * r = lowestCommonAncestor(root->right, p, q);
         if (!l) {
             return r;
         } else if (!r) {
@@ -175,27 +176,37 @@ int main(){
     // vector<int> vec = {4,2,7,1,INT_MIN,7,9,10};
     // vector<int> vec = generateSortedVec(5, 10, 100);
     vector<int> vec = generateRandomVec(6, 10, 100);
+    vec = generateRandomVec(6, 10, 100);
 
     // TreeNode * tree = makeBTree(vec);
     TreeNode * tree = makeBSTree(vec);
-    // int target = 4;
-
-    // TreeNode * p = searchBST(tree, 77);
-    // TreeNode * q = searchBST(tree, 83);
-
     cout << bTreeDepth(tree) << endl;
 
     printVector(vec);
-    printVector(preorderTraversal(tree));
-    printVector(postorderTraversal(tree));
-
-    // print2dVec(levelOrderBTree(tree));
     displayBTree(tree);
 
-    // TreeNode* ans = lowestCommonAncestor(tree, p, q);
 
-    // cout << "p: " << p->val << ", q: " << q->val << ", ans: " << ans->val << endl;
+    TreeNode* p = searchBST(tree, 11), *q = searchBST(tree, 22);
+    TreeNode* ans = lowestCommonAncestor(tree, p, q);
 
+    cout << "p: " << p->val << ", q: " << q->val << ", ans: " << ans->val << endl;
+
+
+    freeBTree(tree);
+
+    // vec = {1,2};
+    vec = {2,1};
+    tree = makeBSTree(vec);
+    printVector(vec);
+    displayBTree(tree);
+
+    p = searchBST(tree, 1);
+    q = searchBST(tree, 2);
+    ans = lowestCommonAncestor(tree, p, q);
+
+    cout << "p: " << p->val << ", q: " << q->val << ", ans: " << ans->val << endl;
+
+    freeBTree(tree);
 
 
 
@@ -207,7 +218,7 @@ int main(){
     // print2dVec(levelOrderBTree(searchBST( tree, 2 )));
     // print2dVec(levelOrderBTree(searchBST( tree, 12 )));
 
-    freeBTree(tree);
+    // freeBTree(tree);
 
 
     return 0;

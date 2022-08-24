@@ -196,12 +196,15 @@ void displayBTree(TreeNode * root){
     TreeNode * curr;
     int lvl = 0, depth = bTreeDepth(root), valSize = 2, spSize = 2, width = pow(2, depth-1)*(valSize+spSize) ;
 
+    // width -= spSize;
+    // width -= spSize;
 
     cout << "Depth: " << depth << ", width: " << width << endl;
 
     while (!qu.empty() && lvl < depth) {
         string row(width, '-');
-        for (int i = (width/pow(2, lvl))/2 ; i < width; i += width/pow(2, lvl ) ) {
+        // for (int i = ((width/pow(2, lvl))/2) ; i < width; i += 1+(width/pow(2, lvl)) ) {
+        for (int i = ((width/pow(2, lvl))/2) ; i < width; i += (width/pow(2, lvl)) ) {
             curr = qu.front();
             qu.pop();
             if (curr) {
