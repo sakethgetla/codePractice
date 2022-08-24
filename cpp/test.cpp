@@ -60,12 +60,36 @@ int main(){
 
 
     // vector<int> vals = generateSortedVec(pow(2, 4)-1, 0, pow(2, 4)-1);
-    vector<int> vals = generateSequenceVec(0, pow(2, 4));
-    printVector(vals);
 
-    TreeNode * root = makeBTree(vals);
-    print2dVec(levelOrderBTree(root));
+    // vector<int> vals = generateSequenceVec(10, pow(2, 4));
+
+    vector<int> vec = generateRandomVec(30, 0, 10);
+
+    // vector<int> vec = generateSortedVec(31, 10, 100);
+    // vector<int> vec = {0};
+    // vector<int> vec = {0,1};
+    printVector(vec);
+    TreeNode * root = makeBTree(vec);
+    cout << BTreeDepth(root) << endl;
+
+    displayBTree(root);
+
+    // printBTree(root);
+    // cout << endl;
     freeBTree(root);
+
+
+
+    // vector<int> vals = {0,1,2,3,4,INT_MIN,5};
+    // printVector(vals);
+
+    // TreeNode * root = makeBTree(vals);
+    // printBSTree(root);
+    // cout << endl;
+    // printBTree(root);
+    // cout << endl;
+    // freeBTree(root);
+
     // printBTree(root);
 
 

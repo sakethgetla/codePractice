@@ -1,12 +1,15 @@
+#include <climits>
 #include <cstdlib>
 #include <queue>
 #include <stack>
 #include <unordered_map>
 #include <cassert>
 #include <vector>
-#include "helperFunctions.h"
+#include "helperFunctions.cpp"
 
 using namespace std;
+
+
 
 vector<int> preorderTraversal(TreeNode* root) {
     if (root) {
@@ -90,7 +93,118 @@ bool isSymmetric(TreeNode* root) {
     return isSymmetric(root->left, root->right);
 }
 
+
+TreeNode* searchBST(TreeNode* root, int val) {
+    if (!root) {
+        return nullptr;
+    } else if (root->val == val) {
+        return root;
+    }else {
+        return root->val > val ? searchBST(root->left, val) : searchBST(root->right, val);
+    }
+}
+
+// bool findTargetBST(TreeNode* root, int k) {
+//     // 2 Sum in BST
+
+//     stack<TreeNode*> stk;
+//     stk.push(root);
+//     TreeNode* curr ;
+//     unordered_map<int, bool> mp;
+
+//     while (!stk.empty()) {
+//         curr = stk.top();
+//         stk.pop();
+
+//         if (mp.find(k - curr->val) != mp.end())
+//             return true;
+
+//         if (curr->right)
+//             stk.push(curr->right);
+
+//         if (curr->left)
+//             stk.push(curr->left);
+
+//         mp[curr->val] = true;
+
+//     }
+
+//     return false;
+// }
+
+
+bool findTargetBST(TreeNode* root, int k, unordered_map<int, bool> &mp) {
+    if (root ){
+        if (mp.find(k - root->val) != mp.end()) {
+            return true;
+        } else {
+            mp[root->val] = true;
+            return findTargetBST(root->left, k, mp) || findTargetBST(root->right, k, mp);
+        }
+    } else {
+        return false;
+    }
+}
+
+bool findTargetBST(TreeNode* root, int k) {
+    // 2 Sum in BST
+    unordered_map<int, bool> mp;
+    return findTargetBST(root, k, mp);
+}
+
+
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    if (!root) {
+        return nullptr;
+    } else if (root == p || root == q){
+        return root;
+    } else {
+        TreeNode * l = lowestCommonAncestor(root->left, p, q), * r = lowestCommonAncestor(root->left, p, q);
+        if (!l) {
+            return r;
+        } else if (!r) {
+            return l;
+        }else {
+            return root;
+        }
+    }
+    // return nullptr;
+}
+
 int main(){
+    // vector<int> vec = {4,2,7,1,INT_MIN,7,9,10};
+    // vector<int> vec = generateSortedVec(5, 10, 100);
+    vector<int> vec = generateRandomVec(6, 10, 100);
+
+    // TreeNode * tree = makeBTree(vec);
+    TreeNode * tree = makeBSTree(vec);
+    // int target = 4;
+
+    // TreeNode * p = searchBST(tree, 77);
+    // TreeNode * q = searchBST(tree, 83);
+
+    cout << BTreeDepth(tree) << endl;
+
+    printVector(vec);
+    print2dVec(levelOrderBTree(tree));
+    displayBTree(tree);
+
+    // TreeNode* ans = lowestCommonAncestor(tree, p, q);
+
+    // cout << "p: " << p->val << ", q: " << q->val << ", ans: " << ans->val << endl;
+
+
+
+
+    // print2dVec(levelOrderBTree(tree));
+    // cout << "target: " << target << ", " << findTargetBST(tree, target) << endl;
+    // cout << "target: " << target << ", " << findTargetBST(tree, target) << endl;
+
+    // print2dVec(levelOrderBTree(tree));
+    // print2dVec(levelOrderBTree(searchBST( tree, 2 )));
+    // print2dVec(levelOrderBTree(searchBST( tree, 12 )));
+
+    freeBTree(tree);
 
 
     return 0;
