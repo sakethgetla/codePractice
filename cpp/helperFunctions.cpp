@@ -3,6 +3,8 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <math.h>
+#include <queue>
 #include <vector>
 #include <cstring>
 #include <bits/stdc++.h>
@@ -179,54 +181,110 @@ TreeNode * makeBSTree(vector<int> vals){
 
 
 
-int BTreeDepth(TreeNode * root){
+int bTreeDepth(TreeNode * root){
     if (root == nullptr) {
         return 0;
     } else {
-        return 1 + max(BTreeDepth(root->left), BTreeDepth(root->right));
+        return 1 + max(bTreeDepth(root->left), bTreeDepth(root->right));
     }
 }
 
 
 void displayBTree(TreeNode * root){
-    int depth = BTreeDepth(root), lvl = 0, valSize = 2, spaceSize = 6, numSpaces;
-    queue<TreeNode*> q;
-    TreeNode * curr ;
-    q.push(root);
+    queue<TreeNode * > qu;
+    qu.push(root);
+    TreeNode * curr;
+    int lvl = 0, depth = bTreeDepth(root), valSize = 2, spSize = 2, width = pow(2, depth-1)*(valSize+spSize) ;
 
-    while (!q.empty() && lvl < depth) {
 
-        // numSpaces = (((spaceSize+valSize)*pow(2, depth))/( lvl+2 ))-valSize;
-        numSpaces = ((spaceSize + valSize)*pow(2, depth)/(pow(2, lvl+2)*2)) ;
-        for (int j = 0; j < numSpaces ; j++) {
-            cout << ' ';
-        }
+    cout << "Depth: " << depth << ", width: " << width << endl;
 
-        // for (int i = 0; i < pow(2, lvl) && !q.empty() ; i++) {
-        for (int i = 0; i < pow(2, lvl) ; i++) {
-
-            curr = q.front();
-            q.pop();
+    while (!qu.empty() && lvl < depth) {
+        string row(width, '-');
+        for (int i = (width/pow(2, lvl))/2 ; i < width; i += width/pow(2, lvl ) ) {
+            curr = qu.front();
+            qu.pop();
             if (curr) {
-                cout << curr->val;
-                q.push(curr->left);
-                q.push(curr->right);
+                // cout << curr->val << " ";
+                row[i] = '0' + (curr->val/10);
+                row[i+1] = '0' + (curr->val%10);
+                qu.push(curr->left);
+                qu.push(curr->right);
             } else {
-                cout << "NN";
+                // cout << "NN ";
+                row[i] = 'N';
+                row[i+1] = 'N';
+                qu.push(nullptr);
+                qu.push(nullptr);
             }
-
-            numSpaces = (spaceSize*pow(2, depth))/pow(2, lvl+2 );
-            for (int j = 0; j < numSpaces ; j++) {
-                cout << ' ';
-            }
-
         }
-        cout << endl;
-        lvl++;
+        cout << row << endl;
+        lvl ++;
     }
 
-
 }
+
+
+// void displayBTree(TreeNode * root){
+//     int depth = BTreeDepth(root), lvl = 0, valSize = 2, spaceSize = 4, numSpaces;
+//     queue<TreeNode*> q;
+//     TreeNode * curr ;
+//     q.push(root);
+
+//     cout << "Depth: " << depth << endl;
+//     while (!q.empty() && lvl < depth) {
+
+//         // numSpaces = (((spaceSize+valSize)*pow(2, depth))/( lvl+2 ))-valSize;
+//         // numSpaces = ((spaceSize + valSize)*pow(2, depth)/(pow(2, lvl+2)*2)) ;
+//         int a = spaceSize + valSize, b = pow(2, depth-1), c = (pow(2, lvl) + 1);
+//         numSpaces = (a*b/c);
+//         // numSpaces = (depth-1-lvl)*(spaceSize+valSize);
+//         // cout << a << " * " << b << " / "<< c << " = " << numSpaces << endl;
+//         // for (int j = 0; j < numSpaces ; j++) {
+//         //     cout <<  ' ';
+//         // }
+
+//         cout << numSpaces;
+//         string row(a*b, '_');
+//         // for (int i = 0; i < pow(2, lvl) && !q.empty() ; i++) {
+//         for (int i = 1; i <= pow(2, lvl) ; i++) {
+
+//             // for (int j = 0; j < numSpaces-1 ; j++) {
+//             //     cout <<  ' ';
+//             // }
+
+//             curr = q.front();
+//             q.pop();
+//             if (curr) {
+//                 // cout << curr->val << ", ";
+//                 // cout << curr->val;
+//                 row[( i*numSpaces )-1] = '0' + curr->val/10;
+//                 row[( i*numSpaces )] = '0' + curr->val%10;
+//                 q.push(curr->left);
+//                 q.push(curr->right);
+//             } else {
+//                 // cout << "NN";
+//                 // cout << "NN, ";
+//                 row[( i*numSpaces )-1] = 'N';
+//                 row[( i*numSpaces )] = 'N';
+//                 // row[( i*numSpaces )] = curr->val/10;
+//                 q.push(nullptr);
+//                 q.push(nullptr);
+//             }
+
+//             // numSpaces = (spaceSize*pow(2, depth-1))/pow(2, lvl+1 );
+//             // for (int j = 0; j < numSpaces -1 ; j++) {
+//             //     cout << ' ';
+//             // }
+
+//         }
+
+//         cout << row << endl;
+//         lvl++;
+//     }
+
+
+// }
 
 
 

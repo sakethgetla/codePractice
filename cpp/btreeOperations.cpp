@@ -183,10 +183,13 @@ int main(){
     // TreeNode * p = searchBST(tree, 77);
     // TreeNode * q = searchBST(tree, 83);
 
-    cout << BTreeDepth(tree) << endl;
+    cout << bTreeDepth(tree) << endl;
 
     printVector(vec);
-    print2dVec(levelOrderBTree(tree));
+    printVector(preorderTraversal(tree));
+    printVector(postorderTraversal(tree));
+
+    // print2dVec(levelOrderBTree(tree));
     displayBTree(tree);
 
     // TreeNode* ans = lowestCommonAncestor(tree, p, q);
