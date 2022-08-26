@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <unordered_map>
 #include <cassert>
-#include "helperFunctions.h"
+#include "helperFunctions.cpp"
 
 using namespace std;
 
