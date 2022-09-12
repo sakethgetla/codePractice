@@ -72,19 +72,28 @@ TreeNode * makeTreeNode(int val){
 }
 
 TreeNode * makeBTree(vector<int> &vals){
+    // treat val = 0 as null;
     queue<TreeNode *> q;
     TreeNode* root = makeTreeNode(vals[0]);
     TreeNode* curr = root;
 
     for (int i = 1; i < vals.size(); i++) {
         if (curr->left) {
-            curr->right = makeTreeNode(vals[i]);
-            q.push(curr->right);
+            if (vals[i] == 0){
+                curr->right =  nullptr;
+            } else {
+                curr->right =  makeTreeNode(vals[i]);
+                q.push(curr->right);
+            }
             curr = q.front();
             q.pop();
         } else {
-            curr->left = makeTreeNode(vals[i]);
-            q.push(curr->left);
+            if (vals[i] == 0){
+                curr->left =  nullptr;
+            } else {
+                curr->left = makeTreeNode(vals[i]);
+                q.push(curr->left);
+            }
         }
 
     }

@@ -1,4 +1,5 @@
 #include <climits>
+#include <cstdio>
 #include <cstdlib>
 #include <queue>
 #include <stack>
@@ -172,41 +173,80 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
     // return nullptr;
 }
 
+int minDepth(TreeNode* root) {
+    if (!root) {
+        return 0;
+    }
+
+    if (!root->left) {
+        return 1 + minDepth(root->right);
+    }
+
+    if (!root->right) {
+        return 1 + minDepth(root->left);
+    }
+
+    return 1 + min(minDepth(root->left), minDepth(root->right));
+}
+
 int main(){
-    // vector<int> vec = {4,2,7,1,INT_MIN,7,9,10};
-    // vector<int> vec = generateSortedVec(5, 10, 100);
-    vector<int> vec = generateRandomVec(6, 10, 100);
-    vec = generateRandomVec(6, 10, 100);
 
-    // TreeNode * tree = makeBTree(vec);
-    TreeNode * tree = makeBSTree(vec);
+    // vector<int> vec = generateRandomVec(5, 10, 100);
+    // TreeNode * tree = makeBSTree(vec);
+    vector<int> vec = {3, 9, 20, 0, 0, 15, 7};
+    TreeNode * tree = makeBTree(vec);
     cout << bTreeDepth(tree) << endl;
-
     printVector(vec);
     displayBTree(tree);
 
-
-    TreeNode* p = searchBST(tree, 11), *q = searchBST(tree, 22);
-    TreeNode* ans = lowestCommonAncestor(tree, p, q);
-
-    cout << "p: " << p->val << ", q: " << q->val << ", ans: " << ans->val << endl;
-
+    printf("min depth: %d\n", minDepth(tree));
 
     freeBTree(tree);
 
-    // vec = {1,2};
-    vec = {2,1};
-    tree = makeBSTree(vec);
+    vec = {2,0,3,0,4,0,5,0,6};
+    tree = makeBTree(vec);
+    cout << bTreeDepth(tree) << endl;
     printVector(vec);
     displayBTree(tree);
 
-    p = searchBST(tree, 1);
-    q = searchBST(tree, 2);
-    ans = lowestCommonAncestor(tree, p, q);
-
-    cout << "p: " << p->val << ", q: " << q->val << ", ans: " << ans->val << endl;
+    printf("min depth: %d\n", minDepth(tree));
 
     freeBTree(tree);
+
+    // // vector<int> vec = {4,2,7,1,INT_MIN,7,9,10};
+    // // vector<int> vec = generateSortedVec(5, 10, 100);
+    // vector<int> vec = generateRandomVec(6, 10, 100);
+    // vec = generateRandomVec(6, 10, 100);
+
+    // // TreeNode * tree = makeBTree(vec);
+    // TreeNode * tree = makeBSTree(vec);
+    // cout << bTreeDepth(tree) << endl;
+
+    // printVector(vec);
+    // displayBTree(tree);
+
+
+    // TreeNode* p = searchBST(tree, 11), *q = searchBST(tree, 22);
+    // TreeNode* ans = lowestCommonAncestor(tree, p, q);
+
+    // cout << "p: " << p->val << ", q: " << q->val << ", ans: " << ans->val << endl;
+
+
+    // freeBTree(tree);
+
+    // // vec = {1,2};
+    // vec = {2,1};
+    // tree = makeBSTree(vec);
+    // printVector(vec);
+    // displayBTree(tree);
+
+    // p = searchBST(tree, 1);
+    // q = searchBST(tree, 2);
+    // ans = lowestCommonAncestor(tree, p, q);
+
+    // cout << "p: " << p->val << ", q: " << q->val << ", ans: " << ans->val << endl;
+
+    // freeBTree(tree);
 
 
 
