@@ -200,6 +200,7 @@ int bTreeDepth(TreeNode * root){
 
 
 void displayBTree(TreeNode * root){
+    // only works with positive values 0 < val <
     queue<TreeNode * > qu;
     qu.push(root);
     TreeNode * curr;
