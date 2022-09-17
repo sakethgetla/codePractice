@@ -41,6 +41,12 @@ void f(vector<int> &vals, int i) {
 
 int main(){
 
+    vector<int> v1 = generateSequenceVec(50, 60);
+    vector<int> v2 = getSubset(v1, 10);
+
+    printVector(v1);
+    printVector(v2);
+
     // string a = makeRandomSentence(10);
     // cout << '"' << a << '"' << endl;
 
@@ -64,20 +70,20 @@ int main(){
     // vector<int> vals = generateSequenceVec(10, pow(2, 4));
 
     // vector<int> vec = generateRandomVec(30, 0, 10);
-    vector<int> vec = generateRandomVec(50, 10, 100);
+    // vector<int> vec = generateRandomVec(50, 10, 100);
 
     // vector<int> vec = generateSortedVec(31, 10, 100);
     // vector<int> vec = {0};
     // vector<int> vec = {0,1};
-    printVector(vec);
-    TreeNode * root = makeBTree(vec);
-    cout << bTreeDepth(root) << endl;
+    // printVector(vec);
+    // TreeNode * root = makeBTree(vec);
+    // cout << bTreeDepth(root) << endl;
 
-    displayBTree(root);
+    // displayBTree(root);
 
     // printBTree(root);
     // cout << endl;
-    freeBTree(root);
+    // freeBTree(root);
 
 
 

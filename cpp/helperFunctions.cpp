@@ -5,6 +5,7 @@
 #include <iostream>
 #include <math.h>
 #include <queue>
+#include <type_traits>
 #include <vector>
 #include <cstring>
 #include <bits/stdc++.h>
@@ -397,6 +398,46 @@ vector<int> generateSequenceVec(int low, int high){
     return vec;
 }
 
+
+
+string getSubset(string superSet, int subsetSize){
+    cout << superSet.length() << ", " << subsetSize << endl;
+
+    vector<int> indexs = generateSequenceVec(0, superSet.length());
+    string subset;
+    int temp;
+
+    // for (int i = indexs.size()-1; i > indexs.size()-subsetSize; i--) {
+    for (int i = indexs.size()-1; i >= (int)(indexs.size()-subsetSize) ; i--) {
+        cout << i << endl;
+        cout << indexs.size() << ", " << indexs.size()-subsetSize << ", " << subsetSize << endl;
+        swap(indexs[rand()%(i+1)], indexs[i]);
+        // subset.push_back(superSet[indexs[i]]);
+        subset += superSet[indexs[i]];
+    }
+    return subset;
+}
+
+template<typename T>
+vector<T> getSubset(vector<T> superSet, int subsetSize){
+    vector<int> indexs = generateSequenceVec(0, superSet.size());
+    // assert(true);
+    assert(indexs.size() == superSet.size());
+    vector<T> subset;
+    int temp;
+
+    // cout << indexs.size() << ", " << subsetSize << endl;
+    // for (int i = indexs.size()-1; i >= 0; i--) {
+    for (int i = indexs.size()-1; i >= (int)(indexs.size()-subsetSize) ; i--) {
+        // cout << i << endl;
+        // cout << indexs.size() << ", " << indexs.size()-subsetSize << ", " << subsetSize << endl;
+        swap(indexs[rand()%(i+1)], indexs[i]);
+        subset.push_back(superSet[indexs[i]]);
+    }
+    return subset;
+}
+
+
 // void generateSortedVec(vector<int> &vec, int low, int high){
 //     generateRandomVec(vec, low, high);
 //     sort(vec.begin(), vec.end());
@@ -430,11 +471,11 @@ vector<vector<int>> makeRandomMatrix(int m, int n, int low, int high){
 
 
 string makeRandomWord(int size){
-    char s[size];
-    for (int i = 0; i < size-1; i++) {
+    char s[size+1];
+    for (int i = 0; i < size; i++) {
         s[i] = 'a'+(rand()%26) ;
     }
-    s[size-1] = '\0';
+    s[size] = '\0';
     return s;
 }
 

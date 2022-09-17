@@ -13,15 +13,15 @@ using namespace std;
 // int climbStaris(int two, int one){
 // }
 
-int climbStaris(int n){
-    int ones=1, temp, twos=0;
-    for (int i = 1; i < n; i++) {
-        temp = twos;
-        twos = ones;
-        ones += temp;
-    }
-    return ones + twos;
-}
+// int climbStaris(int n){
+//     int ones=1, temp, twos=0;
+//     for (int i = 1; i < n; i++) {
+//         temp = twos;
+//         twos = ones;
+//         ones += temp;
+//     }
+//     return ones + twos;
+// }
 
 // int climbStaris(int n){
 //     vector<pair<int, int>> com;
@@ -37,6 +37,20 @@ int climbStaris(int n){
 
 // }
 
+
+
+int climbStaris(int n){
+
+    int ones = 1, twos = 1, temp;
+    n--;
+    while (n > 1) {
+        temp = ones;
+        ones += twos;
+        twos = temp;
+        n-=1;
+    }
+    return n == 0 ? 1 : twos + ones;
+}
 
 int main(){
     int n ;
