@@ -64,42 +64,71 @@ bool checkInclusion(string s1, string s2) {
 
 }
 
+string decodeMessage(string key, string message) {
+    char mp ['z'+1] = {0};
+    int cnt = 'a';
+
+    for (char c : key) {
+       if (c != ' ' && cnt <= 'z' && mp[c] == 0) {
+           mp[c] = cnt;
+           cnt++;
+       }
+    }
+
+    for (int i = 0; i < message.length(); i++) {
+        message[i] = message[i] == ' ' ? ' ' : mp[message[i]];
+    }
+
+    return message;
+}
+
+
 int main(){
+    string key = "the quick brown fox jumps over the lazy dog", message = "vkbs bs t suepuv";
+    string ans = decodeMessage(key, message);
+    cout << key << ": " << message << endl;
+    cout << ans << endl;
+
+    key = "eljuxhpwnyrdgtqkviszcfmabo", message = "zwx hnfx lqantp mnoeius ycgk vcnjrdb";
+    ans = decodeMessage(key, message);
+    cout << key << ": " << message << endl;
+    cout << ans << endl;
+
 
     // string s1 = getSubset(s2, 10);
-    string s1 = makeRandomWord(10);
-    string s2 = makeRandomWord(10) + getSubset(s1, 10);
+    // string s1 = makeRandomWord(10);
+    // string s2 = makeRandomWord(10) + getSubset(s1, 10);
 
 
-    bool ans ;
-    cout << s2 << ": " << s1 << endl;
+    // bool ans ;
+    // cout << s2 << ": " << s1 << endl;
 
-    ans = checkInclusion(s1, s2);
-    cout << s2 << ": " << s1 << ": " << ans  << endl;
+    // ans = checkInclusion(s1, s2);
+    // cout << s2 << ": " << s1 << ": " << ans  << endl;
 
-    s1 += 'a';
-    ans = checkInclusion(s1, s2);
-    cout << s2 << ": " << s1 << ": " << ans  << endl;
+    // s1 += 'a';
+    // ans = checkInclusion(s1, s2);
+    // cout << s2 << ": " << s1 << ": " << ans  << endl;
 
-    s1 = "ab";
-    s2 = "eidboaoo";
-    ans = checkInclusion(s1, s2);
-    cout << s2 << ": " << s1 << ": " << ans  << endl;
+    // s1 = "ab";
+    // s2 = "eidboaoo";
+    // ans = checkInclusion(s1, s2);
+    // cout << s2 << ": " << s1 << ": " << ans  << endl;
 
-    s1 = "a";
-    s2 = "b";
-    ans = checkInclusion(s1, s2);
-    cout << s2 << ": " << s1 << ": " << ans  << endl;
+    // s1 = "a";
+    // s2 = "b";
+    // ans = checkInclusion(s1, s2);
+    // cout << s2 << ": " << s1 << ": " << ans  << endl;
 
-    s1 = "b";
-    s2 = "b";
-    ans = checkInclusion(s1, s2);
-    cout << s2 << ": " << s1 << ": " << ans  << endl;
+    // s1 = "b";
+    // s2 = "b";
+    // ans = checkInclusion(s1, s2);
+    // cout << s2 << ": " << s1 << ": " << ans  << endl;
 
-    s1 = "ab";
-    s2 = "eidbaooo";
-    ans = checkInclusion(s1, s2);
-    cout << s2 << ": " << s1 << ": " << ans  << endl;
+    // s1 = "ab";
+    // s2 = "eidbaooo";
+    // ans = checkInclusion(s1, s2);
+    // cout << s2 << ": " << s1 << ": " << ans  << endl;
 
 
 

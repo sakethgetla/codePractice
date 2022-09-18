@@ -29,20 +29,20 @@ ListNode* removeElements(ListNode* head, int val) {
 //     }
 // }
 
-ListNode* reverseList(ListNode* head) {
-    // iterative
+// ListNode* reverseList(ListNode* head) {
+//     // iterative
 
-    ListNode * curr = head;
-    ListNode * prev = nullptr;
-    ListNode * temp ;
-    while (curr != nullptr) {
-        temp = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = temp;
-    }
-    return prev;
-}
+//     ListNode * curr = head;
+//     ListNode * prev = nullptr;
+//     ListNode * temp ;
+//     while (curr != nullptr) {
+//         temp = curr->next;
+//         curr->next = prev;
+//         prev = curr;
+//         curr = temp;
+//     }
+//     return prev;
+// }
 
 ListNode* deleteDuplicates(ListNode* head) {
     if (head == nullptr) {
@@ -96,14 +96,29 @@ ListNode* middleNode(ListNode* head) {
 }
 
 
+ListNode* reverseList(ListNode* head) {
+    if (head->next == nullptr) {
+        return head;
+    } else {
+        ListNode * temp = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return temp;
+    }
+}
+
+
 int main(){
     vector<int> vec = {1,2,3,4,5,6};
     // int val = 6;
     ListNode * head = makeList(vec);
     printListNode(head);
-    ListNode * ans = middleNode(head);
+
+    // ListNode * ans = middleNode(head);
+    ListNode * ans = reverseList(head);
+
     printListNode(ans);
-    freeList(head);
+    freeList(ans);
 
     // ListNode * ans = removeElements(head, val);
     // ListNode * ans ;

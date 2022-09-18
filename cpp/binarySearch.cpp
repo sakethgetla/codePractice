@@ -92,7 +92,18 @@ int firstBadVersion(int n) {
 }
 
 int searchInsert(vector<int>& nums, int target) {
-
+   int l = 0, h = nums.size()-1, mid;
+   while (l < h) {
+       mid = (l+h)/2;
+       if (nums[mid] == target) {
+           return mid;
+       } else if (nums[mid] < target) {
+           l = mid+1;
+       } else {
+           h = mid;
+       }
+   }
+   return h;
 }
 
 
@@ -106,26 +117,24 @@ int main(){
     // int target;
     int ans;
 
-    vec = generateSequenceVec(0, 20);
+    vec = generateSortedVec(20, 0, 10);
     target = 5;
     // ans = search(vec, target);
-    ans = firstBadVersion(20);
+    ans = searchInsert(vec, target);
     printVector(vec);
     cout << "target: " << target << ", ans: " << ans << endl;
 
     // vec = generateSortedVec(20, 0, 100);
-    vec = generateSequenceVec(0, 20);
+    vec = generateSortedVec(20, 0, 20);
     target = 1;
-    // ans = search(vec, target);
-    ans = firstBadVersion(20);
+    ans = searchInsert(vec, target);
     printVector(vec);
     cout << "target: " << target << ", ans: " << ans << endl;
 
 
-    vec = generateSequenceVec(0, 20);
+    vec = generateSortedVec(20, 0, 50);
     target = 9;
-    // ans = search(vec, target);
-    ans = firstBadVersion(20);
+    ans = searchInsert(vec, target);
     printVector(vec);
     cout << "target: " << target << ", ans: " << ans << endl;
     return 0;

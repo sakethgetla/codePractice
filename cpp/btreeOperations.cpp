@@ -189,29 +189,65 @@ int minDepth(TreeNode* root) {
     return 1 + min(minDepth(root->left), minDepth(root->right));
 }
 
+bool isSameTree(TreeNode* p, TreeNode* q) {
+    return ( p == nullptr && q == nullptr ) || (p && q && p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right));
+    // if (( p == nullptr && q == nullptr ) || (p && q && p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right)))  {
+    //     return true;
+    // } else {
+    //     return false;
+    // }
+}
+
+
+
 int main(){
+    vector<int> vec = {3, 9, 20, 0, 0, 15, 7};
+    TreeNode * t1 = makeBTree(vec);
+    vec = {3, 9, 20, 0, 0, 15, 7, 1};
+    TreeNode * t2 = makeBTree(vec);
+    displayBTree(t1);
+    displayBTree(t2);
+
+    cout << isSameTree(t1, t2) << endl;
+
+    freeBTree(t1);
+    freeBTree(t2);
+
+    vec = {3, 9, 20, 0, 0, 15, 7};
+    t1 = makeBTree(vec);
+    vec = {3, 9, 20, 0, 0, 15, 7};
+    t2 = makeBTree(vec);
+    displayBTree(t1);
+    displayBTree(t2);
+
+    cout << isSameTree(t1, t2) << endl;
+
+    freeBTree(t1);
+    freeBTree(t2);
+
 
     // vector<int> vec = generateRandomVec(5, 10, 100);
     // TreeNode * tree = makeBSTree(vec);
-    vector<int> vec = {3, 9, 20, 0, 0, 15, 7};
-    TreeNode * tree = makeBTree(vec);
-    cout << bTreeDepth(tree) << endl;
-    printVector(vec);
-    displayBTree(tree);
+    // vector<int> vec = {3, 9, 20, 0, 0, 15, 7};
+    // TreeNode * tree = makeBTree(vec);
 
-    printf("min depth: %d\n", minDepth(tree));
+    // cout << bTreeDepth(tree) << endl;
+    // printVector(vec);
+    // displayBTree(tree);
 
-    freeBTree(tree);
+    // printf("min depth: %d\n", minDepth(tree));
 
-    vec = {2,0,3,0,4,0,5,0,6};
-    tree = makeBTree(vec);
-    cout << bTreeDepth(tree) << endl;
-    printVector(vec);
-    displayBTree(tree);
+    // freeBTree(tree);
 
-    printf("min depth: %d\n", minDepth(tree));
+    // vec = {2,0,3,0,4,0,5,0,6};
+    // tree = makeBTree(vec);
+    // cout << bTreeDepth(tree) << endl;
+    // printVector(vec);
+    // displayBTree(tree);
 
-    freeBTree(tree);
+    // printf("min depth: %d\n", minDepth(tree));
+
+    // freeBTree(tree);
 
     // // vector<int> vec = {4,2,7,1,INT_MIN,7,9,10};
     // // vector<int> vec = generateSortedVec(5, 10, 100);
