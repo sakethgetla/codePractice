@@ -37,15 +37,40 @@ void f(vector<int> &vals, int i) {
 
 
 
+void t(vector<int> &nums){
+    int l = 1, r=1;
+
+    while (r < nums.size()){
+        swap(nums[l], nums[r]);
+        if (nums[l-1] != nums[l]){
+            l++;
+        } else {
+            nums[l] = -1;
+        }
+        r++;
+    }
+    // return nums;
+
+}
 
 
 int main(){
 
-    vector<int> v1 = generateSequenceVec(50, 60);
-    vector<int> v2 = getSubset(v1, 10);
+    vector<int> nums = generateSortedVec(10, 10, 60);
+    // vector<int> v2 = getSubset(v1, 10);
 
-    printVector(v1);
-    printVector(v2);
+    printVector(nums);
+    t(nums);
+    printVector(nums);
+
+
+    nums = generateSortedVec(20, 0, 20);
+    printVector(nums);
+    t(nums);
+    printVector(nums);
+
+    // printVector(v2);
+    //
 
     // string a = makeRandomSentence(10);
     // cout << '"' << a << '"' << endl;
