@@ -12,13 +12,17 @@ class TreeNode:
         s = ''
         while (len(q) > 0):
             currNode = q.pop(0)
-            if currNode.left != None:
+            if currNode != None:
                 q.append(currNode.left)
-
-            if currNode.right != None:
                 q.append(currNode.right)
 
-            s += str( currNode.val ) + ', '
+            # if currNode.left != None:
+            #     q.append(currNode.left)
+            #
+            # if currNode.right != None:
+            #     q.append(currNode.right)
+            #
+            s += str( currNode.val  ) + ', ' if currNode else 'None, '
         return s
 
 # # def printTree(t: TreeNode) -> List[int]:
