@@ -1,7 +1,7 @@
 from typing import List
 
 class Solution:
-    # dp
+    # dp, very slow
     def buddyStrings(self, st: str, goal: str) -> bool:
         if len(st) != len( goal ):
             return False
