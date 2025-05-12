@@ -22,3 +22,8 @@ s.add(1)
 s.add(2)
 s.add(4)
 print(s, 4 not in s, 4 in s)
+
+
+s = Solution()
+o = s.guessNumber(20)
+print (o)
