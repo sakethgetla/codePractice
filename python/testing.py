@@ -25,6 +25,7 @@ print(s, 4 not in s, 4 in s)
 
 
 s = Solution()
-o = s.guessNumber(20)
-print (o)
-assert ==
+n = 20
+o = s.guessNumber(n)
+print (n, o)
+assert o ==
