@@ -8,7 +8,7 @@ class Solution:
             if sequence[i:i + len(word)] == word:
                 dp[i + len(word)] += dp[i - len(word) + len(word)] + 1
 
-        print(dp)
+        # print(dp)
         return max(dp)
 
     # def maxRepeating(self, sequence: str, word: str) -> int:
