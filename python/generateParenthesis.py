@@ -33,6 +33,7 @@ class Solution:
         #
 
 s = Solution()
+
 n = 3
 o = s.generateParenthesis(n)
 print(n, o)
