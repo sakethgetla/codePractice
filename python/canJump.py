@@ -12,8 +12,8 @@ class Solution:
     #     return a[-1]
     def canJump(self, nums: List[int]) -> bool:
         # a = [None for _ in range(len( nums ) + 1)]
-        a = [False for _ in nums]
-        a[0] = True
+        # a = [False for _ in nums]
+        # a[0] = True
         # a[1] = True
         mxJump = 0
         i = 0
