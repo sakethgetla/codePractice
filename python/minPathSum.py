@@ -2,9 +2,9 @@ from typing import List
 
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
-      # prevRowCost = [n for n in grid[0]]
       prevRowCost = [float('inf') for n in grid[0]]
       prevRowCost[0] = 0
+      # prevRowCost = [n for n in grid[0]]
       # prevRowCost = grid[0]
       # prevTileCost = 0
       # currRowCost = [0 for _ in len(grid[0])]
