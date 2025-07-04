@@ -5,27 +5,37 @@ class Solution:
         g.sort()
         s.sort()
 
-        i = 0
-        # for c in g:
-        print(g, s)
-        content = 0
-        for j in range(len(g)):
-            while i < len(s) and g[j] > s[i]:
-                i += 1
-            if i < len(s) and g[j] <= s[i]:
-                i += 1
-                content += 1
-            # print(g[j], i)
-            # if i == len(s):
-            #     return j
-            # if i >= len(s)-1:
-            #     # return int(j)
-            #     # return j +1-1
-            #     return j
-            # # if i < len(s) and g[j] <= s[i]:
-            #
-        return content
+        j = 0
+        for i in range(len(s)):
+            if j < len(g) and g[j] <= s[i]:
+                j += 1
+        return j
 
+    # def findContentChildren(self, g: List[int], s: List[int]) -> int:
+    #     g.sort()
+    #     s.sort()
+    #
+    #     i = 0
+    #     # for c in g:
+    #     print(g, s)
+    #     content = 0
+    #     for j in range(len(g)):
+    #         while i < len(s) and g[j] > s[i]:
+    #             i += 1
+    #         if i < len(s) and g[j] <= s[i]:
+    #             i += 1
+    #             content += 1
+    #         # print(g[j], i)
+    #         # if i == len(s):
+    #         #     return j
+    #         # if i >= len(s)-1:
+    #         #     # return int(j)
+    #         #     # return j +1-1
+    #         #     return j
+    #         # # if i < len(s) and g[j] <= s[i]:
+    #         #
+    #     return content
+    #
 
 
         
