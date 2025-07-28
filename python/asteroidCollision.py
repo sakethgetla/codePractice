@@ -42,4 +42,4 @@ input = [15, 2,-5]
 output = s.asteroidCollision(input)
 print (input, output)
 assert output == [15]
-
+# oirenst
