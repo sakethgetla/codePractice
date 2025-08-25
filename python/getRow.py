@@ -39,3 +39,4 @@ n = 1
 o = s.getRow(n)
 print(n, o)
 assert o == [1, 1]
+
